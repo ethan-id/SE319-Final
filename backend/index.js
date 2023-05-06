@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://Cluster66410:inanpw6102019@cluster66410.xd7ic8y.mongodb.net/?retryWrites=true&w=majority",
+mongoose.connect("mongodb+srv://Cluster66410:se319mongo@cluster66410.xd7ic8y.mongodb.net/?retryWrites=true&w=majority",
   {
     dbName: "reactdata",
     useNewUrlParser: true,
