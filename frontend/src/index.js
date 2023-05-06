@@ -1,7 +1,10 @@
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import App from './routes/App';
+import Popper from '@popperjs/core';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { store } from './store/store';
 import { Provider } from 'react-redux';
 

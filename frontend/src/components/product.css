@@ -1,0 +1,9 @@
+.productImage {
+    height: 300px;
+    object-fit: cover;
+    object-position: top left;
+}
+
+.productContainer {
+    border: 1px solid black;
+}
