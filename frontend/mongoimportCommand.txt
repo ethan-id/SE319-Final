@@ -1,0 +1,1 @@
+mongoimport --uri "mongodb+srv://Cluster66410:se319mongo@cluster66410.xd7ic8y.mongodb.net/?retryWrites=true&w=majority" --collection "shamazon" --type json --jsonArray --file "C:\Users\ETRul\Downloads\shamazon.json"

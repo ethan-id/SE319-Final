@@ -1,10 +1,22 @@
 import React from "react";
 import "./ViewData.css";
+import Pagination from "../components/Pagination";
 import Product from "../components/Product";
 import { useSelector } from 'react-redux';
+import { useMemo, useState } from "react";
 
 const ViewData = () => {
     const productData = useSelector((state) => state.data.value);
+
+    let PageSize = 21;
+
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const currentPageData = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return productData.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage]);
 
     return (
         <div className="container productView">
@@ -69,17 +81,27 @@ const ViewData = () => {
                         </ul>
                     </div>
                 </div>
-                
+
                 <div className="col-lg-10">
                     <div className="row row-cols-3">
-                        {productData.map((element) => {
+                        {currentPageData.map((element) => {
                             return(
                                 <Product {...element}/>
                             )
                         })}
                     </div>
+                    <div className="d-flex justify-content-center mt-5">
+                        <Pagination
+                            className="pagination-bar"
+                            currentPage={currentPage}
+                            totalCount={productData.length}
+                            pageSize={PageSize}
+                            onPageChange={page => setCurrentPage(page)}
+                        />
+                    </div>
                 </div>
             </div>
+            
         </div>
     )
 }

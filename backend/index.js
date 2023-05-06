@@ -9,7 +9,7 @@ app.use(cors());
 
 mongoose.connect("mongodb+srv://Cluster66410:se319mongo@cluster66410.xd7ic8y.mongodb.net/?retryWrites=true&w=majority",
   {
-    dbName: "reactdata",
+    dbName: "test",
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }
@@ -22,7 +22,8 @@ app.listen(port, () => {
 });
 
 // const Products = require("./dataSchema");
-const ShAmazon = require("./schema");
+// const ShAmazon = require("./schema");
+const ShAmazon = require("./shamazonSchema");
 
 app.get("/", async (req, resp) => {
   const query = {};
