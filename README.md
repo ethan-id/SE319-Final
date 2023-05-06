@@ -1,16 +1,14 @@
 ## SE319-Final
 
-### Development
-
-To run this application you'll have to 
-`cd /backend/`
-`node index.js`
-
-Then
-`cd ../frontend/`
-`npm i`
-`npm start`
-
 ### Authors
 
 Ethan Hancock & Christian Deam
+
+### Development
+
+To run this application you'll have to run the following commands
+<br>`cd /backend/`
+<br>`node index.js`
+<br>`cd ../frontend/`
+<br>`npm i`
+<br>`npm start`
