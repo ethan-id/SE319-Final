@@ -1,5 +1,5 @@
 import React from "react";
-import "./ViewData.css";
+import "./styles/ViewData.css";
 import Product from "../components/Product";
 import { useSelector } from 'react-redux';
 
