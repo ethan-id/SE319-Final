@@ -12,10 +12,8 @@ const Cart = () => {
         <div>
         <div>
             <div class="cartCont">
-                {cart.filter((element) => {
-                    return element.quantity > 0;
-                }).map((product) => {
-                    cartTotal += (product.quantity * product.list_price);
+                {cart.map((product) => {
+                    cartTotal += parseFloat(product.selling_price.substring(1));
                     return (
                         <div key={product.product_name}>
                             <Product {...product}/>
@@ -23,7 +21,7 @@ const Cart = () => {
                         </div>
                     );
                 })}
-                {cartTotal === 0 ? (
+                {cart.length === 0 ? (
                     <div class="px-4 py-5 my-5 text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-25 m-3 bi bi-cart-dash" viewBox="0 0 16 16">
                             <path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/>
