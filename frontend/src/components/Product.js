@@ -10,7 +10,9 @@ const Product = (product, isFeatured) => {
         <div key={product._id} class="container my-2">
             <div class="col">
                 <div class="card">
-                    <img class="card-img productImage" src={product.image} alt={product.product_name}></img>
+                    <button className="productBtn">
+                        <img class="card-img productImage" src={product.image} alt={product.product_name}></img>
+                    </button>
                     <div class="card-body">
                         <h4 class="card-title">{product.product_name}</h4>
                         <h6 class="card-subtitle mb-2 text-muted">{product.category}</h6>
