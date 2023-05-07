@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 import ViewData from './ViewData';
 import Credits from './Credits';
 import Cart from './Cart';
