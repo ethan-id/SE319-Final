@@ -1,20 +1,15 @@
 import React from "react";
 import "./styles/ViewData.css";
 import Product from "../components/Product";
-<<<<<<< HEAD
 import { addToCart } from "../reducers/cartSlice";
 import { setProductData } from "../reducers/dataSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-=======
-import { useSelector } from 'react-redux';
->>>>>>> dc41f39093933142110d9642ecc177ceead1532e
 
 const ViewData = () => {
     const dispatch = useDispatch();
     const productData = useSelector((state) => state.data.value);
-<<<<<<< HEAD
     const originalData = useSelector((state) => state.data.originalData);
     const isLoading = useSelector((state) => state.data.isLoading);
 
@@ -63,8 +58,6 @@ const ViewData = () => {
     const reset = () => {
         dispatch(setProductData(originalData));
     };
-=======
->>>>>>> dc41f39093933142110d9642ecc177ceead1532e
 
     // const sortPriceHigh = () => {
     //     let newData = originalData;
