@@ -61,10 +61,10 @@ const ViewData = () => {
     };
     
     return (
-        <div className="container productView">
+        <div>
             {!isLoading ? 
             <>
-            <div id="myCarousel" className="carousel slide pointer-event" data-bs-ride="carousel">
+            <div id="myCarousel" className="carousel p-5 slide pointer-event" data-bs-ride="carousel">
                 <div className="carousel-indicators">
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" className="" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" className="active" aria-current="true"></button>
@@ -99,69 +99,71 @@ const ViewData = () => {
                 </button>
             </div>
 
-            <div className="row row-cols-2">
-                <div className="col-sm-2">
-                    <div className="card">
-                        <div className="card-header fs-5">
-                            Categories
+            <div className="container">
+                <div className="row row-cols-2 productView pt-4">
+                    <div className="col-sm-2">
+                        <div className="card">
+                            <div className="card-header fs-5">
+                                Categories
+                            </div>
+                            <ul className="list-group list-group-flush">
+                                <button className="list-group-item list-group-item-action" onClick={() => toysCategory()}>
+                                    Toys & Games
+                                </button>
+                                <button className="list-group-item list-group-item-action" onClick={() => artsCategory()}>
+                                    Arts & Crafts
+                                </button>
+                                <button className="list-group-item list-group-item-action" onClick={() => hobbiesCategory()}>
+                                    Hobbies
+                                </button>
+                                <button className="list-group-item list-group-item-action" onClick={() => puzzlesCategory()}>
+                                    Puzzles
+                                </button>
+                                <button className="list-group-item list-group-item-action" onClick={() => sportsCategory()}>
+                                    Sports & Outdoors
+                                </button>
+                                <button className="list-group-item list-group-item-action" onClick={() => homeDecCategory()}>
+                                    Home Décor
+                                </button>
+                                <button className="list-group-item list-group-item-action" onClick={() => homeCategory()}>
+                                    Home & Kitchen 
+                                </button>
+                                <button className="list-group-item list-group-item-action" onClick={() => decorCategory()}>
+                                    Décor
+                                </button>
+                                <button className="list-group-item list-group-item-action" onClick={() => furnitureCategory()}>
+                                    Furniture
+                                </button>
+                                <button className="list-group-item list-group-item-action" onClick={() => learningCategory()}>
+                                    Learning & Education
+                                </button>
+                                <button className="list-group-item list-group-item-action" onClick={() => reset()}>
+                                    Reset
+                                </button>
+                            </ul>
                         </div>
-                        <ul className="list-group list-group-flush">
-                            <button className="list-group-item list-group-item-action" onClick={() => toysCategory()}>
-                                Toys & Games
-                            </button>
-                            <button className="list-group-item list-group-item-action" onClick={() => artsCategory()}>
-                                Arts & Crafts
-                            </button>
-                            <button className="list-group-item list-group-item-action" onClick={() => hobbiesCategory()}>
-                                Hobbies
-                            </button>
-                            <button className="list-group-item list-group-item-action" onClick={() => puzzlesCategory()}>
-                                Puzzles
-                            </button>
-                            <button className="list-group-item list-group-item-action" onClick={() => sportsCategory()}>
-                                Sports & Outdoors
-                            </button>
-                            <button className="list-group-item list-group-item-action" onClick={() => homeDecCategory()}>
-                                Home Décor
-                            </button>
-                            <button className="list-group-item list-group-item-action" onClick={() => homeCategory()}>
-                                Home & Kitchen 
-                            </button>
-                            <button className="list-group-item list-group-item-action" onClick={() => decorCategory()}>
-                                Décor
-                            </button>
-                            <button className="list-group-item list-group-item-action" onClick={() => furnitureCategory()}>
-                                Furniture
-                            </button>
-                            <button className="list-group-item list-group-item-action" onClick={() => learningCategory()}>
-                                Learning & Education
-                            </button>
-                            <button className="list-group-item list-group-item-action" onClick={() => reset()}>
-                                Reset
-                            </button>
-                        </ul>
                     </div>
-                </div>
 
-                <div className="col-lg-10">
-                    <div className="fs-4">
-                        {(productData.length).toLocaleString()} Results...
-                    </div>
-                    <div key={currentPageData.length} className="row row-cols-3">
-                        {currentPageData.map((element) => {
-                            return(
-                                <Product {...element} isFeatured={0}/>
-                            )
-                        })}
-                    </div>
-                    <div className="d-flex justify-content-center mt-5">
-                        <Pagination
-                            className="pagination-bar"
-                            currentPage={currentPage}
-                            totalCount={productData.length}
-                            pageSize={PageSize}
-                            onPageChange={page => setCurrentPage(page)}
-                        />
+                    <div className="col-lg-10">
+                        <div className="fs-4">
+                            {(productData.length).toLocaleString()} Results...
+                        </div>
+                        <div key={currentPageData.length} className="row row-cols-3">
+                            {currentPageData.map((element) => {
+                                return(
+                                    <Product {...element} isFeatured={0}/>
+                                )
+                            })}
+                        </div>
+                        <div className="d-flex justify-content-center mt-5">
+                            <Pagination
+                                className="pagination-bar"
+                                currentPage={currentPage}
+                                totalCount={productData.length}
+                                pageSize={PageSize}
+                                onPageChange={page => setCurrentPage(page)}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

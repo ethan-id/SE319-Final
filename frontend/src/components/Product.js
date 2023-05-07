@@ -14,7 +14,7 @@ const Product = (product, isFeatured) => {
                         <img class="card-img productImage" src={product.image} alt={product.product_name}></img>
                     </button>
                     <div class="card-body">
-                        <h4 class="card-title">{product.product_name}</h4>
+                        <h4 class="card-title productTitle">{product.product_name}</h4>
                         <h6 class="card-subtitle mb-2 text-muted">{product.category}</h6>
                         {isFeatured ? <></> : <p class="card-text productDesc">{product.about_product}</p>}
                         <div class="d-flex justify-content-between align-items-center">
