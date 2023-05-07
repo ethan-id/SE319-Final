@@ -15,9 +15,9 @@ const Cart = () => {
                 {cart.filter((element) => {
                     return element.quantity > 0;
                 }).map((product) => {
-                    cartTotal += (product.quantity * product.price);
+                    cartTotal += (product.quantity * product.list_price);
                     return (
-                        <div key={product.title}>
+                        <div key={product.product_name}>
                             <Product {...product}/>
                             <hr/>
                         </div>
