@@ -1,7 +1,6 @@
 import React from "react";
-import Product from "../components/Product";
+import CartProduct from "../components/CartProduct";
 import { useDispatch, useSelector } from 'react-redux';
-import { setView } from '../reducers/viewSlice';
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -16,7 +15,7 @@ const Cart = () => {
                     cartTotal += parseFloat(product.selling_price.substring(1));
                     return (
                         <div key={product.product_name}>
-                            <Product {...product}/>
+                            <CartProduct {...product}/>
                             <hr/>
                         </div>
                     );
