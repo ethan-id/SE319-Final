@@ -34,10 +34,10 @@ app.get("/", async (req, resp) => {
   resp.send(allProducts);
 });
 
-app.get("/:id", async (req, resp) => {
-  const prodId = Number(req.params.id);
-  const query = { id: prodId };
-  const oneProduct = await ShAmazon.findOne(query);
-  console.log(oneProduct);
-  resp.send(oneProduct);
-});
+// app.get("/:category", async (req, resp) => {
+//   const cat = req.params.category;
+//   const query = { category: cat };
+//   const productsInCategory = await ShAmazon.find(query);
+//   console.log(productsInCategory);
+//   resp.send(productsInCategory);
+// });

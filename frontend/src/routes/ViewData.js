@@ -20,16 +20,17 @@ const ViewData = () => {
 
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    const currentPageData = productData.slice(firstPageIndex, lastPageIndex);
+    let currentPageData = productData.slice(firstPageIndex, lastPageIndex);
+
+    const fetchToysCategory = () => {
+        currentPageData = productData.filter((product) => product.category.includes("Toys"));
+        console.log(currentPageData);
+    }
 
     return (
         <div className="container productView">
             {!isLoading ? 
             <>
-            <div class="px-4 py-5 pb-0 text-center">
-                <h1 class="display-5 fw-bold">Featured Products</h1>
-            </div>
-
             <div id="myCarousel" className="carousel slide pointer-event" data-bs-ride="carousel">
                 <div className="carousel-indicators">
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" className="" aria-label="Slide 1"></button>
@@ -72,14 +73,14 @@ const ViewData = () => {
                             Categories
                         </div>
                         <ul className="list-group list-group-flush">
-                            <a href="#" className="list-group-item list-group-item-action" aria-current="true">
-                                The current link item
+                            <button className="list-group-item list-group-item-action" onClick={() => fetchToysCategory()}>
+                                Toys
+                            </button>
+                            <a href="#" className="list-group-item list-group-item-action">
+                                Games
                             </a>
                             <a href="#" className="list-group-item list-group-item-action">
-                                A second link item
-                            </a>
-                            <a href="#" className="list-group-item list-group-item-action">
-                                A third link item
+                                Electronics
                             </a>
                             <a href="#" className="list-group-item list-group-item-action">
                                 A fourth link item
@@ -89,7 +90,10 @@ const ViewData = () => {
                 </div>
 
                 <div className="col-lg-10">
-                    <div className="row row-cols-3">
+                    <div className="fs-4">
+                        {(productData.length).toLocaleString()} Results...
+                    </div>
+                    <div key={currentPageData.length} className="row row-cols-3">
                         {currentPageData.map((element) => {
                             return(
                                 <Product {...element} isFeatured={0}/>

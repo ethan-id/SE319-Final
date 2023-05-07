@@ -37,6 +37,14 @@ function App() {
           <Route path="/credits" element={<Credits />}/>
           <Route path="/cart" element={<Cart />}/>
         </Routes>
+        <footer class="py-3 mt-4 bg-dark">
+          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li><Link className="nav-link px-2 text-white" to="/">Home</Link></li>
+                <li><Link className="nav-link px-2 text-white" to="/credits">Credits</Link></li>
+                <li><Link className="nav-link px-2 text-white" to="/cart">Cart</Link></li>
+          </ul>
+          <p class="text-center text-white">© 2023 ShAmazon, Inc</p>
+        </footer>
       </BrowserRouter>
     </div>
   );
