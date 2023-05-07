@@ -16,8 +16,11 @@ const Product = (product, isFeatured) => {
                         <h6 class="card-subtitle mb-2 text-muted">{product.category}</h6>
                         {isFeatured ? <></> : <p class="card-text productDesc">{product.about_product}</p>}
                         <div class="d-flex justify-content-between align-items-center">
-                            <div class="text-success">
+                            <div class="text-success ">
+                                {product.list_price ? <>
                                 <h5 class="m-auto">{product.selling_price}</h5>
+                                <h5 class="m-auto text-decoration-line-through">{product.list_price}</h5></> : 
+                                <h5 class="m-auto ">{product.selling_price}</h5>}
                             </div>
                             <button className="btn btn-primary" onClick={() => dispatch(addToCart(product))}>
                                 <i class="bi bi-cart"></i> Add To Cart

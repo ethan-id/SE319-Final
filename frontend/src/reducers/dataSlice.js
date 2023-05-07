@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   value: [],
-  isLoading: true
+  isLoading: true,
+  originalData: []
 };
 
 export const dataSlice = createSlice({
@@ -10,9 +11,12 @@ export const dataSlice = createSlice({
   initialState,
   reducers: {
     setProductData: (state, action) => {
+      if (state.value.length === 0) {
+        state.originalData = action.payload;
+      }
       state.value = action.payload;
       state.isLoading = false;
-    },
+    }
   },
 });
 

@@ -3,11 +3,15 @@ import "./ViewData.css";
 import Pagination from "../components/Pagination";
 import Product from "../components/Product";
 import { addToCart } from "../reducers/cartSlice";
+import { setProductData } from "../reducers/dataSlice";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
 const ViewData = () => {
+    const dispatch = useDispatch();
     const productData = useSelector((state) => state.data.value);
+    const originalData = useSelector((state) => state.data.originalData);
     const isLoading = useSelector((state) => state.data.isLoading);
 
     let PageSize = 15;
@@ -20,13 +24,55 @@ const ViewData = () => {
 
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    let currentPageData = productData.slice(firstPageIndex, lastPageIndex);
+    const currentPageData = productData.slice(firstPageIndex, lastPageIndex);
 
-    const fetchToysCategory = () => {
-        currentPageData = productData.filter((product) => product.category.includes("Toys"));
-        console.log(currentPageData);
-    }
+    const toysCategory = () => {
+        dispatch(setProductData(originalData.filter((product) => (product.category.includes("Toys") || product.category.includes("Games")))));
+    };
+    const artsCategory = () => {
+        dispatch(setProductData(originalData.filter((product) => (product.category.includes("Arts") || product.category.includes("Crafts")))));
+    };
+    const hobbiesCategory = () => {
+        dispatch(setProductData(originalData.filter((product) => product.category.includes("Hobbies"))));
+    };
+    const puzzlesCategory = () => {
+        dispatch(setProductData(originalData.filter((product) => (product.category.includes("Arts") || product.category.includes("Crafts")))));
+    };
+    const sportsCategory = () => {
+        dispatch(setProductData(originalData.filter((product) => (product.category.includes("Sports") || product.category.includes("Outdoors")))));
+    };
+    const homeCategory = () => {
+        dispatch(setProductData(originalData.filter((product) => product.category.includes("Home"))));
+    };
+    const homeDecCategory = () => {
+        dispatch(setProductData(originalData.filter((product) => product.category.includes("Home Décor"))));
+    };
+    const decorCategory = () => {
+        dispatch(setProductData(originalData.filter((product) => product.category.includes("Décor"))));
+    };
+    const furnitureCategory = () => {
+        dispatch(setProductData(originalData.filter((product) => product.category.includes("Furniture"))));
+    };
+    const learningCategory = () => {
+        dispatch(setProductData(originalData.filter((product) => (product.category.includes("Learning") || product.category.includes("Education")))));
+    };
+    const reset = () => {
+        dispatch(setProductData(originalData));
+    };
 
+    // const sortPriceHigh = () => {
+    //     let newData = originalData;
+    //     dispatch(setProductData(newData.sort((a, b) => {
+    //         return a.selling_price - b.selling_price;
+    //     })));
+    // };
+    // const sortPriceLow = () => {
+    //     let newData = originalData;
+    //     dispatch(setProductData(newData.sort((a, b) => {
+    //         return b.selling_price - a.selling_price;
+    //     })));
+    // };
+    
     return (
         <div className="container productView">
             {!isLoading ? 
@@ -69,24 +115,59 @@ const ViewData = () => {
             <div className="row row-cols-2">
                 <div className="col-sm-2">
                     <div className="card">
-                        <div className="card-header fs-5">
+                        <div className="card-header fs-5 fw-bold">
                             Categories
                         </div>
                         <ul className="list-group list-group-flush">
-                            <button className="list-group-item list-group-item-action" onClick={() => fetchToysCategory()}>
-                                Toys
+                            <button className="list-group-item list-group-item-action" onClick={() => toysCategory()}>
+                                Toys & Games
                             </button>
-                            <a href="#" className="list-group-item list-group-item-action">
-                                Games
-                            </a>
-                            <a href="#" className="list-group-item list-group-item-action">
-                                Electronics
-                            </a>
-                            <a href="#" className="list-group-item list-group-item-action">
-                                A fourth link item
-                            </a>
+                            <button className="list-group-item list-group-item-action" onClick={() => artsCategory()}>
+                                Arts & Crafts
+                            </button>
+                            <button className="list-group-item list-group-item-action" onClick={() => hobbiesCategory()}>
+                                Hobbies
+                            </button>
+                            <button className="list-group-item list-group-item-action" onClick={() => puzzlesCategory()}>
+                                Puzzles
+                            </button>
+                            <button className="list-group-item list-group-item-action" onClick={() => sportsCategory()}>
+                                Sports & Outdoors
+                            </button>
+                            <button className="list-group-item list-group-item-action" onClick={() => homeDecCategory()}>
+                                Home Décor
+                            </button>
+                            <button className="list-group-item list-group-item-action" onClick={() => homeCategory()}>
+                                Home & Kitchen 
+                            </button>
+                            <button className="list-group-item list-group-item-action" onClick={() => decorCategory()}>
+                                Décor
+                            </button>
+                            <button className="list-group-item list-group-item-action" onClick={() => furnitureCategory()}>
+                                Furniture
+                            </button>
+                            <button className="list-group-item list-group-item-action" onClick={() => learningCategory()}>
+                                Learning & Education
+                            </button>
+                            <button className="list-group-item list-group-item-action" onClick={() => reset()}>
+                                Reset
+                            </button>
                         </ul>
                     </div>
+
+                    {/* <div class="dropdown my-3">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sort By Price
+                        </button>
+                        <ul class="dropdown-menu">
+                            <button className="list-group-item list-group-item-action" onClick={() => sortPriceHigh()}>
+                                Highest First
+                            </button>
+                            <button className="list-group-item list-group-item-action" onClick={() => sortPriceLow()}>
+                                Lowest First
+                            </button>
+                        </ul>
+                    </div> */}
                 </div>
 
                 <div className="col-lg-10">
