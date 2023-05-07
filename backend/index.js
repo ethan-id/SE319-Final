@@ -28,7 +28,9 @@ const ShAmazon = require("./shamazonSchema");
 app.get("/", async (req, resp) => {
   const query = {};
   const allProducts = await ShAmazon.find(query);
+  const count = await ShAmazon.countDocuments(query)
   console.log(allProducts);
+  console.log(count);
   resp.send(allProducts);
 });
 

@@ -2,24 +2,30 @@ import React from "react";
 import "./ViewData.css";
 import Pagination from "../components/Pagination";
 import Product from "../components/Product";
-import { useSelector } from 'react-redux';
-import { useMemo, useState } from "react";
+import { addToCart } from "../reducers/cartSlice";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const ViewData = () => {
     const productData = useSelector((state) => state.data.value);
+    const isLoading = useSelector((state) => state.data.isLoading);
 
-    let PageSize = 21;
+    let PageSize = 15;
 
     const [currentPage, setCurrentPage] = useState(1);
 
-    const currentPageData = useMemo(() => {
-        const firstPageIndex = (currentPage - 1) * PageSize;
-        const lastPageIndex = firstPageIndex + PageSize;
-        return productData.slice(firstPageIndex, lastPageIndex);
-    }, [currentPage]);
+    const feat1 = Math.floor(Math.random() * productData.length);
+    const feat2 = Math.floor(Math.random() * productData.length);
+    const feat3 = Math.floor(Math.random() * productData.length);
+
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    const currentPageData = productData.slice(firstPageIndex, lastPageIndex);
 
     return (
         <div className="container productView">
+            {!isLoading ? 
+            <>
             <div class="px-4 py-5 pb-0 text-center">
                 <h1 class="display-5 fw-bold">Featured Products</h1>
             </div>
@@ -34,17 +40,17 @@ const ViewData = () => {
                 <div className="carousel-inner">
                     <div className="carousel-item">
                         <div className="row row-cols-2">
-                            <Product {...productData[0]}/>
+                            <Product {...productData[feat1]} isFeatured={1}/>
                         </div>
                     </div>
                     <div className="carousel-item active">
                         <div className="row row-cols-2">
-                            <Product {...productData[1]}/>
+                            <Product {...productData[feat2]} isFeatured={1}/>
                         </div>
                     </div>
                     <div className="carousel-item">
                         <div className="row row-cols-2">
-                            <Product {...productData[2]}/>
+                            <Product {...productData[feat3]} isFeatured={1}/>
                         </div>
                     </div>
                 </div>
@@ -86,7 +92,7 @@ const ViewData = () => {
                     <div className="row row-cols-3">
                         {currentPageData.map((element) => {
                             return(
-                                <Product {...element}/>
+                                <Product {...element} isFeatured={0}/>
                             )
                         })}
                     </div>
@@ -101,7 +107,12 @@ const ViewData = () => {
                     </div>
                 </div>
             </div>
-            
+            </> : 
+            <div class="d-flex justify-content-center  fs-3 m-5">
+                <div class="spinner-border spin fs-1" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>}
         </div>
     )
 }

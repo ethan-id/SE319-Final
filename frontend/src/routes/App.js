@@ -25,7 +25,6 @@ function App() {
           <div className="container">
             <div className="d-flex align-items-center justify-content-center">
               <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <img src="../images/logo/png/logo-no-background.png"></img>
                 <li><Link className="nav-link px-2 text-white" to="/">Home</Link></li>
                 <li><Link className="nav-link px-2 text-white" to="/credits">Credits</Link></li>
                 <li><Link className="nav-link px-2 text-white" to="/cart">Cart</Link></li>
