@@ -1,27 +1,26 @@
 import React from "react";
 import "./product.css";
+import { addToCart } from "../reducers/cartSlice";
+import { useDispatch } from "react-redux";
 
-const Product = (product) => {
+const Product = (product, isFeatured) => {
+    const dispatch = useDispatch();
+
     return (
-        <div class="container my-2">
+        <div key={product._id} class="container my-2">
             <div class="col">
                 <div class="card">
-                    <img class="card-img productImage" src={product.thumbnail} alt={product.title}></img>
-                    <div class="card-img-overlay d-flex justify-content-end">
-                        <a href="#" class="card-link text-danger like">
-                            <i class="bi bi-heart"></i>
-                        </a>
-                    </div>
+                    <img class="card-img productImage" src={product.image} alt={product.product_name}></img>
                     <div class="card-body">
-                        <h4 class="card-title">{product.title}</h4>
+                        <h4 class="card-title">{product.product_name}</h4>
                         <h6 class="card-subtitle mb-2 text-muted">{product.category}</h6>
-                        <p class="card-text">{product.description}</p>
-                        <div class="buy d-flex justify-content-between align-items-center">
-                            <div class="price text-success">
-                                <h5 class="mt-4">${product.price}</h5>
+                        {isFeatured ? <></> : <p class="card-text productDesc">{product.about_product}</p>}
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="text-success">
+                                <h5 class="m-auto">{product.selling_price}</h5>
                             </div>
-                            <button class="btn btn-danger mt-3">
-                                <i class="bi bi-cart"></i> Add to Cart
+                            <button className="btn btn-primary" onClick={() => dispatch(addToCart(product))}>
+                                <i class="bi bi-cart"></i> Add To Cart
                             </button>
                         </div>
                     </div>

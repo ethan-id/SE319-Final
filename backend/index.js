@@ -7,9 +7,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://Cluster66410:inanpw6102019@cluster66410.xd7ic8y.mongodb.net/?retryWrites=true&w=majority",
+mongoose.connect("mongodb+srv://Cluster66410:se319mongo@cluster66410.xd7ic8y.mongodb.net/?retryWrites=true&w=majority",
   {
-    dbName: "reactdata",
+    dbName: "test",
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }
@@ -22,19 +22,22 @@ app.listen(port, () => {
 });
 
 // const Products = require("./dataSchema");
-const ShAmazon = require("./schema");
+// const ShAmazon = require("./schema");
+const ShAmazon = require("./shamazonSchema");
 
 app.get("/", async (req, resp) => {
   const query = {};
   const allProducts = await ShAmazon.find(query);
+  const count = await ShAmazon.countDocuments(query)
   console.log(allProducts);
+  console.log(count);
   resp.send(allProducts);
 });
 
-app.get("/:id", async (req, resp) => {
-  const prodId = Number(req.params.id);
-  const query = { id: prodId };
-  const oneProduct = await ShAmazon.findOne(query);
-  console.log(oneProduct);
-  resp.send(oneProduct);
-});
+// app.get("/:category", async (req, resp) => {
+//   const cat = req.params.category;
+//   const query = { category: cat };
+//   const productsInCategory = await ShAmazon.find(query);
+//   console.log(productsInCategory);
+//   resp.send(productsInCategory);
+// });
