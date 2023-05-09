@@ -6,3 +6,30 @@
             line-clamp: 1;
     -webkit-box-orient: vertical;
 }
+
+.emptyBtn {
+    width: auto;
+}
+
+.cartCont {
+    background-color: #eee;
+    border-radius: 5px;
+}
+
+.imageCont {
+    background-color: white;
+    border-left: 1px solid #222;
+    border-right: 1px solid #222;
+}
+
+.cartImage {
+    height: 10vh;
+    overflow: hidden;
+    object-fit: fill;
+    mix-blend-mode: multiply;
+}
+
+.productBox {
+    overflow: auto;
+    height: 68.5vh;
+}

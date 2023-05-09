@@ -4,6 +4,12 @@
     object-position: top left;
 }
 
+.cartImage {
+    height: 300px;
+    object-fit: cover;
+    object-position: top left;
+}
+
 .productBtn {
 	background: none;
 	color: inherit;
@@ -34,4 +40,28 @@
     -webkit-line-clamp: 4; /* number of lines to show */
             line-clamp: 4;
     -webkit-box-orient: vertical;
+}
+
+.cartProductDesc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+            line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.featDesc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 7; /* number of lines to show */
+            line-clamp: 7;
+    -webkit-box-orient: vertical;
+}
+
+.featImage {
+    min-height: 35vh;
+    object-fit: cover;
+    object-position: top;
 }

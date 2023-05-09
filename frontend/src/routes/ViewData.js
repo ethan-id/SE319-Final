@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/ViewData.css";
 import Pagination from "../components/Pagination";
 import Product from "../components/Product";
-import { addToCart } from "../reducers/cartSlice";
+import FeaturedProduct from "../components/FeaturedProduct";
 import { setProductData } from "../reducers/dataSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -21,6 +21,8 @@ const ViewData = () => {
     const feat1 = Math.floor(Math.random() * productData.length);
     const feat2 = Math.floor(Math.random() * productData.length);
     const feat3 = Math.floor(Math.random() * productData.length);
+    const feat4 = Math.floor(Math.random() * productData.length);
+    const feat5 = Math.floor(Math.random() * productData.length);
 
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
@@ -69,22 +71,34 @@ const ViewData = () => {
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" className="" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" className="active" aria-current="true"></button>
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
                 </div>
 
                 <div className="carousel-inner">
                     <div className="carousel-item">
-                        <div className="row row-cols-2">
-                            <Product {...productData[feat1]} isFeatured={1}/>
+                        <div className="row row-cols-2 align-items-center">
+                            <FeaturedProduct {...originalData[feat1]}/>
                         </div>
                     </div>
                     <div className="carousel-item active">
                         <div className="row row-cols-2">
-                            <Product {...productData[feat2]} isFeatured={1}/>
+                            <FeaturedProduct {...originalData[feat2]}/>
                         </div>
                     </div>
                     <div className="carousel-item">
                         <div className="row row-cols-2">
-                            <Product {...productData[feat3]} isFeatured={1}/>
+                            <FeaturedProduct {...originalData[feat3]}/>
+                        </div>
+                    </div>
+                    <div className="carousel-item">
+                        <div className="row row-cols-2">
+                            <FeaturedProduct {...originalData[feat4]}/>
+                        </div>
+                    </div>
+                    <div className="carousel-item">
+                        <div className="row row-cols-2">
+                            <FeaturedProduct {...originalData[feat5]}/>
                         </div>
                     </div>
                 </div>

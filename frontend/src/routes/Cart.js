@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles/cart.css";
 import CartProduct from "../components/CartProduct";
+import Payment from "../components/Payment";
 import { emptyCart } from "../reducers/cartSlice";
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -22,47 +23,41 @@ const Cart = () => {
                     </div>
                 ) :
                 <div>
-                    <div className="container mt-3 fs-2 text-body fw-bold d-flex flex-row justify-content-between">
-                        {cart.length} items in cart
-                        <button className="btn btn-primary fw-bold fs-5" onClick={() => dispatch(emptyCart())}>
-                            <i class="bi bi-trash"></i> Empty Cart
-                        </button>
-                    </div>
-                    <hr/>
-                    <div className="container">
+                    <div className="container my-3">
                         <div className="row row-cols-2">
                             <div className="col row row-cols-1">
-                                {cart.map((product) => {
-                                    cartTotal += parseFloat(product.selling_price.substring(1));
-                                    return (
-                                        <div key={product.product_name}>
-                                            <CartProduct {...product}/>
-                                        </div>
-                                    );
-                                })}
+                                <div className="d-flex flex-row justify-content-between align-items-center mb-5">
+                                    <div className="fs-3 fw-bold">
+                                        {cart.length} items in cart
+                                    </div>
+                                    <button className="btn btn-secondary fw-bold emptyBtn fs-5 px-3" onClick={() => dispatch(emptyCart())}>
+                                        <i class="bi bi-trash"></i> Empty Cart
+                                    </button>
+                                </div>
+                                <div className="container productBox">
+                                    {cart.map((product) => {
+                                        cartTotal += parseFloat(product.selling_price.substring(1));
+                                        return (
+                                            <div key={product.product_name}>
+                                                <CartProduct {...product}/>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
-                            <div class="col d-flex flex-column align-items-start totalInfo">
-                                <div class="h5">
+                            <div class="col d-flex flex-column align-items-center m-auto totalInfo">
+                                <div class="h3">
                                     Sub-total: ${cartTotal.toFixed(2)}
                                 </div>
-                                <div class="h5">
+                                <div class="h3">
                                     Tax: ${(cartTotal * 0.07).toFixed(2)} 
                                 </div>
-                                <div class="h3 fw-bold">
+                                <div class="h1 fw-bold mb-5">
                                     Total: ${(cartTotal += (cartTotal * 0.07)).toFixed(2)} 
                                 </div>
-                                {cart.map((product) => {
-                                    cartTotal += parseFloat(product.selling_price.substring(1));
-                                    return (
-                                        <>
-                                        <div key={product.product_name} className="my-3 text-body">
-                                            {product.selling_price}
-                                            <img className="mx-3 cartSub" src={product.image} width="50" height="50"/>
-                                            {product.product_name}
-                                        </div>
-                                        </>
-                                    );
-                                })}
+                                <div className="">
+                                    <Payment {...{total: (cartTotal).toFixed(2)}}/>
+                                </div>
                             </div>      
                         </div>
                     </div>
