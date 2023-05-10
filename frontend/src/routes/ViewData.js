@@ -177,7 +177,7 @@ const ViewData = () => {
                         <div key={currentPageData.length} className="row row-cols-3">
                             {currentPageData.map((element) => {
                                 return(
-                                    <Product {...element} isFeatured={0}/>
+                                    <Product {...element}/>
                                 )
                             })}
                         </div>

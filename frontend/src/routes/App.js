@@ -46,9 +46,6 @@ function App() {
   const schoolCategory = () => {
       dispatch(setProductData(originalData.filter((product) => (product.category.includes("School")))));
   };
-  const reset = () => {
-      dispatch(setProductData(originalData));
-  };
   
   useEffect(() => {
     fetch("http://localhost:4000/")
@@ -61,12 +58,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      
         <header className="p-3 text-bg-dark">
           <div className="container">
             <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 grid justify-content-start align-items-center mb-md-0 fs-3 fw-bold">
               <li>
-                <img src={"../logo/png/logo-white.png"} className="logo me-4"/>
+                <img src={"../logo/png/logo-white.png"} alt="ShAmazon logo" className="logo me-4"/>
               </li>
               {active === "Home" ? <li><Link className="nav-link px-2 text-white fw-normal" to="/" onClick={() => {setActive("Home")}}>Home</Link></li>: 
               <li><Link className="nav-link px-4 text-white" to="/" onClick={() => {setActive("Home")}}>Home</Link></li>}
