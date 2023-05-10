@@ -1,3 +1,24 @@
 .footer {
     margin-top: auto;
 }
+
+.logo {
+    width: 6vw;
+}
+
+.bcItem {
+    text-decoration: none;
+    color: white;
+}
+
+.loading {
+    margin: 23.2vh;
+}
+
+.nav-link {
+    transition: all .2s ease-in-out;
+}
+
+.nav-link:hover {
+    transform: scale(1.1);
+}

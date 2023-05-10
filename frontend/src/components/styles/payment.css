@@ -22,3 +22,7 @@
     transform: translate(15px);
     transition: transform 0.2s ease-in;
 }
+
+.pay {
+    text-decoration: none;
+}

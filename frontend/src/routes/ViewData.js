@@ -58,6 +58,12 @@ const ViewData = () => {
     const learningCategory = () => {
         dispatch(setProductData(originalData.filter((product) => (product.category.includes("Learning") || product.category.includes("Education")))));
     };
+    const officeCategory = () => {
+        dispatch(setProductData(originalData.filter((product) => (product.category.includes("Office")))));
+    };
+    const schoolCategory = () => {
+        dispatch(setProductData(originalData.filter((product) => (product.category.includes("School")))));
+    };
     const reset = () => {
         dispatch(setProductData(originalData));
     };
@@ -113,7 +119,7 @@ const ViewData = () => {
                 </button>
             </div>
 
-            <div className="container">
+            <div className="container" id="products">
                 <div className="row row-cols-2 productView pt-4">
                     <div className="col-sm-2">
                         <div className="card">
@@ -151,6 +157,12 @@ const ViewData = () => {
                                 <button className="list-group-item list-group-item-action" onClick={() => learningCategory()}>
                                     Learning & Education
                                 </button>
+                                <button className="list-group-item list-group-item-action" onClick={() => officeCategory()}>
+                                    Office
+                                </button>
+                                <button className="list-group-item list-group-item-action" onClick={() => schoolCategory()}>
+                                    School
+                                </button>
                                 <button className="list-group-item list-group-item-action" onClick={() => reset()}>
                                     Reset
                                 </button>
@@ -182,9 +194,9 @@ const ViewData = () => {
                 </div>
             </div>
             </> : 
-            <div class="d-flex justify-content-center  fs-3 m-5">
-                <div class="spinner-border spin fs-1" role="status">
-                    <span class="visually-hidden">Loading...</span>
+            <div className="d-flex justify-content-center  fs-3 m-5">
+                <div className="spinner-border spin fs-1 loading" role="status">
+                    <span className="visually-hidden">Loading...</span>
                 </div>
             </div>}
         </div>

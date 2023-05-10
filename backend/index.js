@@ -15,29 +15,28 @@ mongoose.connect("mongodb+srv://Cluster66410:se319mongo@cluster66410.xd7ic8y.mon
   }
 );
 
-const port = process.env.PORT || 4000;
-const host = "localhost";
-app.listen(port, () => {
-  console.log(`App listening at http://%s:%s`, host, port);
-});
-
-// const Products = require("./dataSchema");
-// const ShAmazon = require("./schema");
 const ShAmazon = require("./shamazonSchema");
 
 app.get("/", async (req, resp) => {
   const query = {};
   const allProducts = await ShAmazon.find(query);
-  const count = await ShAmazon.countDocuments(query)
-  console.log(allProducts);
-  console.log(count);
+  console.log("Fetched all items");
   resp.send(allProducts);
 });
 
-// app.get("/:category", async (req, resp) => {
-//   const cat = req.params.category;
-//   const query = { category: cat };
-//   const productsInCategory = await ShAmazon.find(query);
-//   console.log(productsInCategory);
-//   resp.send(productsInCategory);
-// });
+app.delete("/delete", async (req, resp) => {
+  if (req.body.uniq_id) {
+    console.log("Item exists");
+    console.log(req.body.uniq_id);
+  } else {
+    console.log("Item doesn't exist");
+  }
+  const item = await ShAmazon.findOneAndDelete({uniq_id: req.body.uniq_id});
+  console.log("Deleted item with uniq_id: " + item.uniq_id);
+});
+
+const port = process.env.PORT || 4000;
+const host = "localhost";
+app.listen(port, () => {
+  console.log(`App listening at http://%s:%s`, host, port);
+});

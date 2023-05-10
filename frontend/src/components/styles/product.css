@@ -20,6 +20,10 @@
 	outline: inherit;
 }
 
+.details {
+    text-decoration: none;
+}
+
 .productContainer {
     border: 1px solid black;
 }
