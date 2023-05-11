@@ -41,7 +41,7 @@ const Payment = () => {
                     </div>
                     <div className="col-6">
                         <div className="d-flex flex-column">
-                            <p className="text mb-1">Expiry</p>
+                            <p className="text mb-1">Expires</p>
                             <input className="form-control mb-3" type="text" placeholder="MM/YYYY"></input>
                         </div>
                     </div>
